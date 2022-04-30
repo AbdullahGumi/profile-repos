@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Grid, Box, Typography } from "@mui/material";
+import { format } from "date-fns";
 
 //images
 import { dropdown, activity } from "../assets";
@@ -29,7 +30,7 @@ const RepositoryDetails = ({ details }) => {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                marginBottom: "10px",
+                // marginBottom: "10px",
               }}
             >
               <Typography
@@ -57,11 +58,11 @@ const RepositoryDetails = ({ details }) => {
                 {details.private ? "Private" : "Public"}
               </Box>
             </Box>
-            <Typography
+            {/* <Typography
               style={{ color: "#57606a", fontSize: "12px", marginY: "4px" }}
             >
               Forked from flutter/flutter
-            </Typography>
+            </Typography> */}
 
             <Typography style={{ color: "#57606a", marginBottom: "1rem" }}>
               {details.description}
@@ -101,7 +102,8 @@ const RepositoryDetails = ({ details }) => {
               <Typography
                 sx={{ fontSize: "12px", color: "#57606a", marginRight: "1rem" }}
               >
-                {details.updated_at}
+                Updated on
+                {" " + format(new Date(details.updated_at), "MMMM dd, yyyy")}
               </Typography>
             </Box>
           </Box>

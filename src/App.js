@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Grid, Box } from "@mui/material";
 import GlobalStyle from "./styles/GlobalStyle";
 import Header from "./components/header";
@@ -13,6 +13,7 @@ import SidePanel from "./components/sidePanel";
 function App() {
   const dispatch = useDispatch();
   const repos = useSelector((state) => state.repositories.repos);
+  const [searchedRepo, setSearchedReop] = useState("");
   useEffect(() => {
     dispatch(getRepositories());
     dispatch(getUser());
@@ -30,7 +31,10 @@ function App() {
             <Box
               sx={{ display: "flex", flexDirection: "column", height: "100%" }}
             >
-              <Filter />
+              <Filter
+                searchedRepo={searchedRepo}
+                setSearchedReop={setSearchedReop}
+              />
               <hr
                 style={{
                   borderWidth: "0px 0px 1px 0px",
@@ -39,9 +43,15 @@ function App() {
                   marginTop: "1rem",
                 }}
               />
-              {repos.map((repo, i) => (
-                <RepositoryDetails details={repo} key={i} />
-              ))}
+              {/* show first 20 and also filter by name*/}
+              {repos
+                .slice(0, 20)
+                .map(
+                  (repo, i) =>
+                    repo.name.includes(searchedRepo) && (
+                      <RepositoryDetails details={repo} key={i} />
+                    )
+                )}
             </Box>
           </Grid>
         </Grid>

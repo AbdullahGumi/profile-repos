@@ -4,7 +4,7 @@ import { Grid, Box, Button, Menu, MenuItem, Typography } from "@mui/material";
 //images
 import { dropdown } from "../assets";
 
-const Filter = () => (
+const Filter = ({ searchedRepo, setSearchedReop }) => (
   <Grid
     container
     spacing={5}
@@ -18,6 +18,8 @@ const Filter = () => (
         type="text"
         component="input"
         placeholder="Find a repository…"
+        value={searchedRepo}
+        onChange={(e) => setSearchedReop(e.target.value)}
         sx={{
           fontSize: "14px",
           width: "100%",

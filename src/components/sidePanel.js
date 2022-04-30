@@ -12,7 +12,7 @@ const SidePanel = () => {
   console.log(user);
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <Box sx={{ position: "relative" }}>
+      <Box sx={{ position: "relative", zIndex: 10 }}>
         <img
           style={{
             objectFit: "cover",
@@ -140,7 +140,7 @@ const SidePanel = () => {
           )}
         </Box>
 
-        <hr style={{ borderWidth: "0 0 1px 0", margin: "10px 0" }} />
+        <hr style={{ borderWidth: "0 0 1px 0", margin: "2.1rem 0 10px 0" }} />
         <Typography sx={{ fontWeight: 600, mb: "8px" }}>
           Achievements
         </Typography>

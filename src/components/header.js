@@ -25,6 +25,7 @@ const Header = () => {
         borderBottom: "1px solid #d8dee4",
         position: "sticky",
         top: 0,
+        zIndex: 5,
       }}
     >
       <Box
@@ -60,7 +61,9 @@ const Header = () => {
         }}
       >
         <ReposIcon />
-        <Typography sx={{ fontSize: "14px", marginLeft: "0.6rem" }}>
+        <Typography
+          sx={{ fontSize: "14px", marginLeft: "0.6rem", fontWeight: 600 }}
+        >
           Repositories
         </Typography>
         <Box
