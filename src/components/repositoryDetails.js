@@ -34,6 +34,7 @@ const RepositoryDetails = ({ details }) => {
             >
               <Typography
                 sx={{
+                  ":hover": { cursor: "pointer", textDecoration: "underline" },
                   color: "#0969da",
                   textDecoration: "none",
                   fontSize: "20px",
