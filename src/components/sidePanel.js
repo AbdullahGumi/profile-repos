@@ -13,17 +13,26 @@ const SidePanel = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
       <Box sx={{ position: "relative", zIndex: 10 }}>
-        <img
-          style={{
-            objectFit: "cover",
+        <Box
+          sx={{
             width: "296px",
             height: "296px",
+            background: "#EEE",
             borderRadius: "50%",
-            border: "1px solid #d0d7de",
           }}
-          src={user.avatar_url}
-          alt="proilfe"
-        />
+        >
+          <img
+            style={{
+              objectFit: "cover",
+              borderRadius: "50%",
+              width: "100%",
+              height: "100%",
+              border: "1px solid #d0d7de",
+            }}
+            src={user.avatar_url}
+            alt="proilfe"
+          />
+        </Box>
 
         <img
           style={{
