@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getRepositories = createAsyncThunk(
-  "get/getRepositories",
-  async () => {
-    return fetch("https://api.github.com/users/abdullahgumi/repos").then(
-      (res) => res.json()
-    );
+  "repositories/getRepositories",
+  async (_, { getState }) => {
+    const state = getState();
+    return fetch(
+      `https://api.github.com/users/${state.user.user.login}/repos`
+    ).then((res) => res.json());
   }
 );
 
@@ -30,9 +31,5 @@ export const repositoriesSlice = createSlice({
     },
   },
 });
-
-// Action creators are generated for each case reducer function
-// export const { increment, decrement, incrementByAmount } =
-//   repositoriesSlice.actions;
 
 export default repositoriesSlice.reducer;

@@ -1,19 +1,36 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getUser = createAsyncThunk("get/getUser", async () => {
-  return fetch("https://api.github.com/users/abdullahgumi").then((res) =>
-    res.json()
-  );
-});
+export const getUser = createAsyncThunk(
+  "user/getUser",
+  async (_, { getState }) => {
+    const state = getState();
+    return fetch(`https://api.github.com/users/${state.user.user.login}`).then(
+      (res) => res.json()
+    );
+  }
+);
 
 const initialState = {
-  user: [],
+  isLogged: JSON.parse(localStorage.getItem("isLogged")) || false,
+  user: JSON.parse(localStorage.getItem("user")) || [],
   status: null,
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
+  reducers: {
+    login: (state, action) => {
+      console.log("payload:", action.payload);
+      localStorage.setItem(
+        "isLogged",
+        JSON.stringify(action.payload.isUserLogged)
+      );
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      state.isLogged = true;
+      state.user = action.payload.user;
+    },
+  },
   extraReducers: {
     [getUser.pending]: (state) => {
       state.status = "loading";
@@ -28,7 +45,6 @@ export const userSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
-// export const { increment, decrement, incrementByAmount } = userSlice.actions;
+export const { login } = userSlice.actions;
 
 export default userSlice.reducer;
