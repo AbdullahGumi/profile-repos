@@ -15,18 +15,19 @@ const SidePanel = () => {
       <Box sx={{ position: "relative", zIndex: 10 }}>
         <Box
           sx={{
-            width: "296px",
-            height: "296px",
+            width: { lg: "296px", md: "210px" },
+            height: { lg: "296px", md: "210px" },
             background: "#EEE",
             borderRadius: "50%",
           }}
         >
-          <img
-            style={{
+          <Box
+            component="img"
+            sx={{
               objectFit: "cover",
               borderRadius: "50%",
-              width: "100%",
-              height: "100%",
+              width: { lg: "100%", md: "210px", xs: "100%" },
+              height: { lg: "100%", md: "210px", xs: "100%" },
               border: "1px solid #d0d7de",
             }}
             src={user.avatar_url}
@@ -36,16 +37,17 @@ const SidePanel = () => {
 
         <img
           style={{
+            background: "white",
             objectFit: "cover",
-            width: "38px",
-            height: "38px",
+            width: "35px",
+            height: "35px",
             position: "absolute",
             bottom: "10%",
-            right: "7%",
+            right: "3%",
             borderRadius: "50%",
             border: "1px solid #d0d7de",
           }}
-          src="https://avatars.githubusercontent.com/u/52514546?v=4"
+          src="https://github.githubassets.com/images/icons/emoji/unicode/1f3e0.png"
           alt="proilfe"
         />
       </Box>
