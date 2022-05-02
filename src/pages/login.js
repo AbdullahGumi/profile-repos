@@ -37,7 +37,7 @@ const Login = () => {
   }, [data, dispatch, isUserLogged]);
 
   return isUserLogged ? (
-    <Navigate to="/" />
+    <Navigate to="/wheeee" />
   ) : (
     <Box
       className="container"
