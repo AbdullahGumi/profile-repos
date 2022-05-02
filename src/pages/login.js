@@ -16,6 +16,7 @@ const Login = () => {
     const url = window.location.href;
     const hasCode = url.includes("?code=");
     if (hasCode) {
+      console.log("url", url);
       const newUrl = url.split("?code=");
       window.history.pushState({}, null, newUrl[0]);
       setData({ ...data, isLoading: true });
@@ -37,7 +38,7 @@ const Login = () => {
   }, [data, dispatch, isUserLogged]);
 
   return isUserLogged ? (
-    <Navigate to="/wheeee" />
+    <Navigate to="/" />
   ) : (
     <Box
       className="container"
