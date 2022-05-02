@@ -13,7 +13,6 @@ const Login = () => {
   const [data, setData] = useState({ errorMessage: "", isLoading: false });
 
   useEffect(() => {
-    // After requesting Github access, Github redirects back to your app with a code parameter
     const url = window.location.href;
     const hasCode = url.includes("?code=");
     console.log("isUserLogged", isUserLogged);
