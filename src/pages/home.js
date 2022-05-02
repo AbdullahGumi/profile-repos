@@ -22,7 +22,7 @@ const Home = () => {
   }, [dispatch]);
 
   if (!isUserLogged) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/logintowhat" />;
   }
   return (
     <>
