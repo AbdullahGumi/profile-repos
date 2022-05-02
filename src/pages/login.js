@@ -15,11 +15,7 @@ const Login = () => {
   useEffect(() => {
     const url = window.location.href;
     const hasCode = url.includes("?code=");
-    console.log("isUserLogged", isUserLogged);
-    // If Github API returns the code parameter
     if (hasCode) {
-      console.log("notUserLogged", isUserLogged);
-
       const newUrl = url.split("?code=");
       window.history.pushState({}, null, newUrl[0]);
       setData({ ...data, isLoading: true });
