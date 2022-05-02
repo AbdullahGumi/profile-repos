@@ -16,7 +16,7 @@ const Login = () => {
     const url = window.location.href;
     const hasCode = url.includes("?code=");
     if (hasCode) {
-      console.log("url", url);
+      console.log("url page", url);
       const newUrl = url.split("?code=");
       window.history.pushState({}, null, newUrl[0]);
       setData({ ...data, isLoading: true });
